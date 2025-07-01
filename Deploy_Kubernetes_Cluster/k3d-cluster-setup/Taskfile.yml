@@ -9,7 +9,8 @@ tasks:
       - task: create_cluster
       - task: verify_cluster
       - task: switch_context
-      - task: generate_age_key
+      - task: install_argocd
+      - task: install_strimzi_kafka
       - task: print_setup_complete
 
   install_k3d:
@@ -40,14 +41,101 @@ tasks:
       - kubectl config use-context k3d-ch10-crossplane
     desc: Switch context to k3d-ch10-crossplane
 
-  generate_age_key:
+  install_argocd:
     cmds:
-      - age-keygen -o age.agekey
-      - echo "Public key:"
-      - grep 'public key' age.agekey | awk '{print $4}' > age.pub
-    desc: Generate AGE key
+      - kubectl create namespace argocd ; kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+      - VERSION=$(curl -sSL https://raw.githubusercontent.com/argoproj/argo-cd/stable/VERSION)
+      - curl -sSL -o argocd-linux-arm64 "https://github.com/argoproj/argo-cd/releases/download/v$VERSION/argocd-linux-arm64"
+      - sudo install -m 555 argocd-linux-arm64 /usr/local/bin/argocd
+      - rm argocd-linux-arm64
+      - containerd config default | sudo tee /etc/containerd/config.toml > /dev/null
+      - sudo sed -i '/\[plugins."io.containerd.grpc.v1.cri".registry\]/a\
+  [plugins."io.containerd.grpc.v1.cri".registry.configs."quay.io".tls]\
+  \ \ insecure_skip_verify = true' /etc/containerd/config.toml
+      - kubectl -n argocd rollout restart deployment argocd-server
+      - |
+        cat <<EOF > argocd-ingress.yaml
+        apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+          name: argocd-ingress
+          namespace: argocd
+          annotations:
+            traefik.ingress.kubernetes.io/router.entrypoints: web
+        spec:
+          rules:
+            - host: argocd.bogomil-test.com
+              http:
+                paths:
+                  - path: /
+                    pathType: Prefix
+                    backend:
+                      service:
+                        name: argocd-server
+                        port:
+                          number: 80
+        EOF
+      - kubectl apply -f argocd-ingress.yaml
+      - |
+        cat <<EOF > demo-app.yaml
+        apiVersion: argoproj.io/v1alpha1
+        kind: Application
+        metadata:
+          name: demo-app
+          namespace: argocd
+        spec:
+          project: default
+          source:
+            repoURL: https://github.com/BonganY23/Simplifying-GitOps-with-FluxCD.git
+            targetRevision: Modified_by_me_newest
+            path: application/nginx-app
+          destination:
+            server: https://kubernetes.default.svc
+            namespace: default
+          syncPolicy:
+            automated:
+              prune: true
+              selfHeal: true
+        EOF
+      - kubectl apply -f demo-app.yaml
+      - |
+        kubectl -n argocd patch configmap argocd-cm --type merge -p '
+        data:
+          repositories: |
+            - url: https://github.com/BonganY23/k3d.git
+              type: git
+              insecure: true
+        '
+      - kubectl delete pod -n argocd -l app.kubernetes.io/name=argocd-repo-server
+
+
+
+  install_strimzi_kafka:
+    cmds:
+      - |
+        cat <<EOF > strimzi-kafka.yaml
+        apiVersion: argoproj.io/v1alpha1
+        kind: Application
+        metadata:
+          name: strimzi-kafka
+          namespace: argocd
+        spec:
+          project: default
+          source:
+            repoURL: https://github.com/BonganY23/Simplifying-GitOps-with-FluxCD.git
+            targetRevision: Modified_by_me_newest
+            path: application/strimzi_kafka
+          destination:
+            server: https://kubernetes.default.svc
+            namespace: kafka
+          syncPolicy:
+            automated:
+              prune: true
+              selfHeal: true
+        EOF
+      - kubectl apply -f strimzi-kafka.yaml
 
   print_setup_complete:
     cmds:
-      - echo "Local Packt Management Kubernetes server is set up. Author - Georgi Lazarov."
+      - echo "Local Packt Management Kubernetes server is set up. Author - Bogomil Kovachev."
     desc: Print setup completion message
