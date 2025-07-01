@@ -49,10 +49,13 @@ tasks:
       - curl -sSL -o argocd-linux-arm64 "https://github.com/argoproj/argo-cd/releases/download/v$VERSION/argocd-linux-arm64"
       - sudo install -m 555 argocd-linux-arm64 /usr/local/bin/argocd
       - rm argocd-linux-arm64
+      - sudo mkdir -p /etc/containerd
       - containerd config default | sudo tee /etc/containerd/config.toml > /dev/null
-      - sudo sed -i '/\[plugins."io.containerd.grpc.v1.cri".registry\]/a\
-  [plugins."io.containerd.grpc.v1.cri".registry.configs."quay.io".tls]\
-  \ \ insecure_skip_verify = true' /etc/containerd/config.toml
+      - |
+          sudo sed -i '/\[plugins."io.containerd.grpc.v1.cri".registry\]/a\
+          [plugins."io.containerd.grpc.v1.cri".registry.configs."quay.io".tls]\
+            insecure_skip_verify = true' /etc/containerd/config.toml
+
       - kubectl -n argocd rollout restart deployment argocd-server
       - |
         cat <<EOF > argocd-ingress.yaml
