@@ -100,13 +100,14 @@ tasks:
         EOF
       - kubectl apply -f demo-app.yaml
       - |
-        kubectl -n argocd patch configmap argocd-cm --type merge -p '
-        data:
-          repositories: |
-            - url: https://github.com/BonganY23/k3d.git
-              type: git
-              insecure: true
-        '
+          kubectl -n argocd patch configmap argocd-cm --type merge -p "$(cat <<EOF
+          data:
+            repositories: |
+              - url: https://github.com/BonganY23/k3d.git
+                type: git
+                insecure: true
+          EOF
+          )"
       - kubectl delete pod -n argocd -l app.kubernetes.io/name=argocd-repo-server
 
   install_strimzi_kafka:
