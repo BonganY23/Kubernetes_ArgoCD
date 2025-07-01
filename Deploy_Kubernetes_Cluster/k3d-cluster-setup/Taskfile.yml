@@ -109,8 +109,6 @@ tasks:
         '
       - kubectl delete pod -n argocd -l app.kubernetes.io/name=argocd-repo-server
 
-
-
   install_strimzi_kafka:
     cmds:
       - |
