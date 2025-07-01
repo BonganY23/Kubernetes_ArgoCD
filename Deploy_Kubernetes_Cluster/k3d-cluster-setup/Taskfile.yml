@@ -112,6 +112,14 @@ tasks:
           EOF
           )"
       - kubectl delete pod -n argocd -l app.kubernetes.io/name=argocd-repo-server
+      - |
+          echo "Waiting for all Argo CD pods to be ready..."
+          until kubectl get pods -n argocd | grep -v NAME | awk '{print $3}' | grep -v -E 'Running|Completed' > /dev/null; do
+            kubectl get pods -n argocd
+            sleep 5
+          done
+          echo "All Argo CD pods are running."
+
 
   install_strimzi_kafka:
     cmds:
