@@ -1,1 +1,0 @@
-# Chapter 4: Securing GitOps Workflows
