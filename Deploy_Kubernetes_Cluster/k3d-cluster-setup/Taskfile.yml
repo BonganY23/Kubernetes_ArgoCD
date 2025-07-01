@@ -11,6 +11,7 @@ tasks:
       - task: switch_context
       - task: install_argocd
       - task: install_strimzi_kafka
+      - task: finalizing_cluster
       - task: print_setup_complete
 
   install_k3d:
@@ -135,6 +136,12 @@ tasks:
         EOF
       - kubectl apply -f strimzi-kafka.yaml
 
+  finalizing_cluster:
+    cmds:
+      - k3d node create ch10-crossplane-worker   --cluster ch10-crossplane   --replicas 3   --role agent   --image rancher/k3s:v1.30.0-rc1-k3s1
+      - sed -i 's/0.0.0.0/127.0.0.1/g' ~/.kube/config
+      - k3d cluster stop ch10-crossplane ; k3d cluster start ch10-crossplane  
+ 
   print_setup_complete:
     cmds:
       - echo "Local Packt Management Kubernetes server is set up. Author - Bogomil Kovachev."
