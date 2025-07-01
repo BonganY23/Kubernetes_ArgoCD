@@ -149,8 +149,7 @@ tasks:
   finalizing_cluster:
     cmds:
       - k3d node create ch10-crossplane-worker   --cluster ch10-crossplane   --replicas 3   --role agent   --image rancher/k3s:v1.30.0-rc1-k3s1
-      - sed -i 's/0.0.0.0/127.0.0.1/g' ~/.kube/config
-      - k3d cluster stop ch10-crossplane ; k3d cluster start ch10-crossplane  
+      - sed -i 's/0.0.0.0/127.0.0.1/g' ~/.kube/config  
  
   print_setup_complete:
     cmds:
