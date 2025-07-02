@@ -54,6 +54,18 @@ Command: k3d cluster stop ch10-crossplane ; k3d cluster start ch10-crossplane
 
 VirtualBox port forwarding (NAT):
 
-<img width="702" alt="image" src="https://github.com/user-attachments/assets/7f9101b2-6660-401f-873b-0c6e0566cb3c" />
+We need only SSH 2222 to 22 in VirtualBox.
+
+To access the GUI of Argo in the browser of the local PC, we need to create SSH tunnel.
+
+Command: ssh -p2222 -L 8123:localhost:80 admin@localhost
+
+8123 ==> This is random port which is currenlty not used!
+80 ==> This is the port on which we managed to connect to Argo with Curl locally from the VM.
+
+Example: 
+root@bogomil:~/installation_steps/Simplifying-GitOps-with-FluxCD/Ingress# curl http://argocd.bogomil-test.com:80
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><title>Argo CD</title><base href="/"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="assets/favicon/favicon-32x32.png" sizes="32x32"/><link rel="icon" type="image/png" href="assets/favicon/favicon-16x16.png" sizes="16x16"/><link href="assets/fonts.css" rel="stylesheet"><script defer="defer" src="main.3f69895b83faced35d2c.js"></script></head><body><noscript><p>Your browser does not support JavaScript. Please enable JavaScript to view the site. Alternatively, Argo CD can be used with the <a href="https://argoproj.github.io/argo-cd/cli_installation/">Argo CD CLI</a>.</p></noscript><div id="app"></div></body><script defer="defer" src="extensions.js"></script></html>root@bogomil:~/installation_steps/Simplifying-GitOps-with-FluxCD/Ingress# 
+
 
 
