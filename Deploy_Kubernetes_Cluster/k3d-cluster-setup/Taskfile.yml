@@ -57,7 +57,7 @@ tasks:
       - kubectl -n argocd rollout restart deployment argocd-server
     
       - kubectl apply -f ../../Ingress/argocd-ingress.yaml
-      - kubectl apply -f applications/argo_apps_manifests/demo-app.yaml
+      - kubectl apply -f ../../applications/argo_apps_manifests/demo-app.yaml
       - |
           kubectl -n argocd patch configmap argocd-cm --type merge -p "$(cat <<EOF
           data:
@@ -79,7 +79,7 @@ tasks:
 
   install_strimzi_kafka:
     cmds:
-      - kubectl apply -f applications/argo_apps_manifests/strimzi-kafka.yaml
+      - kubectl apply -f ../../applications/argo_apps_manifests/strimzi-kafka.yaml
 
   finalizing_cluster:
     cmds:
