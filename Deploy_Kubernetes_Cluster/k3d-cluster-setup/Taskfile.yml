@@ -33,8 +33,6 @@ tasks:
         done
       - echo "Cluster is up and running:"
       - k3d cluster list
-      - echo "Press any key to continue..."
-      - read
     desc: Verify k3d cluster is running
 
   switch_context:
