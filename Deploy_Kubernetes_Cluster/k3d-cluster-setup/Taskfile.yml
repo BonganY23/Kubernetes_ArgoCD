@@ -57,29 +57,8 @@ tasks:
             insecure_skip_verify = true' /etc/containerd/config.toml
 
       - kubectl -n argocd rollout restart deployment argocd-server
-      - |
-        cat <<EOF > argocd-ingress.yaml
-        apiVersion: networking.k8s.io/v1
-        kind: Ingress
-        metadata:
-          name: argocd-ingress
-          namespace: argocd
-          annotations:
-            traefik.ingress.kubernetes.io/router.entrypoints: web
-        spec:
-          rules:
-            - host: argocd.bogomil-test.com
-              http:
-                paths:
-                  - path: /
-                    pathType: Prefix
-                    backend:
-                      service:
-                        name: argocd-server
-                        port:
-                          number: 80
-        EOF
-      - kubectl apply -f argocd-ingress.yaml
+    
+      - kubectl apply -f ../../Ingress/argocd-ingress.yaml
       - |
         cat <<EOF > demo-app.yaml
         apiVersion: argoproj.io/v1alpha1
