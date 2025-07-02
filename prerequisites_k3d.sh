@@ -1,10 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-# Create installing directory
-mkdir -p deploy_kubernetes
-cd deploy_kubernetes
-
 # Install docker
 # Add Docker's official GPG key:
 sudo apt-get update
