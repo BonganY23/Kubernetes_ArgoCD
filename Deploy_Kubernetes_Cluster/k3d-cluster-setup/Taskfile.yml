@@ -79,7 +79,7 @@ tasks:
           {"name":"http","port":80,"targetPort":8080},
           {"name":"https","port":443,"targetPort":8083}
         ]}}'
-
+      - kubectl -n argocd patch deployment argocd-server --type='json' -p='[{"op":"add","path":"/spec/template/spec/containers/0/args/-","value":"--insecure"}]'
       - kubectl rollout restart deploy argocd-server -n argocd
 
   install_strimzi_kafka:
