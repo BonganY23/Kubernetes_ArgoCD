@@ -64,8 +64,9 @@ Command: ssh -p2222 -L 8123:localhost:80 admin@localhost
 80 ==> This is the port on which we managed to connect to Argo with Curl locally from the VM.
 
 Example: 
-root@bogomil:~/installation_steps/Simplifying-GitOps-with-FluxCD/Ingress# curl http://argocd.bogomil-test.com:80
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><title>Argo CD</title><base href="/"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="assets/favicon/favicon-32x32.png" sizes="32x32"/><link rel="icon" type="image/png" href="assets/favicon/favicon-16x16.png" sizes="16x16"/><link href="assets/fonts.css" rel="stylesheet"><script defer="defer" src="main.3f69895b83faced35d2c.js"></script></head><body><noscript><p>Your browser does not support JavaScript. Please enable JavaScript to view the site. Alternatively, Argo CD can be used with the <a href="https://argoproj.github.io/argo-cd/cli_installation/">Argo CD CLI</a>.</p></noscript><div id="app"></div></body><script defer="defer" src="extensions.js"></script></html>root@bogomil:~/installation_steps/Simplifying-GitOps-with-FluxCD/Ingress# 
+<root@bogomil:~/installation_steps/Simplifying-GitOps-with-FluxCD/Ingress# curl http://argocd.bogomil-test.com:80
+
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><title>Argo CD</title><base href="/"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" type="image/png" href="assets/favicon/favicon-32x32.png" sizes="32x32"/><link rel="icon" type="image/png" href="assets/favicon/favicon-16x16.png" sizes="16x16"/><link href="assets/fonts.css" rel="stylesheet"><script defer="defer" src="main.3f69895b83faced35d2c.js"></script></head><body><noscript><p>Your browser does not support JavaScript. Please enable JavaScript to view the site. Alternatively, Argo CD can be used with the <a href="https://argoproj.github.io/argo-cd/cli_installation/">Argo CD CLI</a>.</p></noscript><div id="app"></div></body><script defer="defer" src="extensions.js"></script></html>root@bogomil:~/installation_steps/Simplifying-GitOps-with-FluxCD/Ingress# >
 
 
 
