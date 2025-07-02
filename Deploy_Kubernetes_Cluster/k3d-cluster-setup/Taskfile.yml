@@ -75,7 +75,12 @@ tasks:
             sleep 5
           done
           echo "All Argo CD pods are running."
+      - kubectl -n argocd patch svc argocd-server -p '{"spec":{"ports":[
+    {"name":"http","port":80,"targetPort":8080},
+    {"name":"https","port":443,"targetPort":8083}
+  ]}}'
 
+      - kubectl rollout restart deploy argocd-server -n argocd
 
   install_strimzi_kafka:
     cmds:
