@@ -50,3 +50,10 @@ Command: sed -i 's/0.0.0.0/127.0.0.1/g' ~/.kube/config
 
 Command: k3d cluster stop ch10-crossplane ; k3d cluster start ch10-crossplane
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+VirtualBox port forwarding (NAT):
+
+<img width="702" alt="image" src="https://github.com/user-attachments/assets/7f9101b2-6660-401f-873b-0c6e0566cb3c" />
+
+
