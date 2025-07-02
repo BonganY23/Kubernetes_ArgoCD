@@ -59,28 +59,7 @@ tasks:
       - kubectl -n argocd rollout restart deployment argocd-server
     
       - kubectl apply -f ../../Ingress/argocd-ingress.yaml
-      - |
-        cat <<EOF > demo-app.yaml
-        apiVersion: argoproj.io/v1alpha1
-        kind: Application
-        metadata:
-          name: demo-app
-          namespace: argocd
-        spec:
-          project: default
-          source:
-            repoURL: https://github.com/BonganY23/Simplifying-GitOps-with-FluxCD.git
-            targetRevision: Modified_by_me_newest
-            path: application/nginx-app
-          destination:
-            server: https://kubernetes.default.svc
-            namespace: default
-          syncPolicy:
-            automated:
-              prune: true
-              selfHeal: true
-        EOF
-      - kubectl apply -f demo-app.yaml
+      - kubectl apply -f applications/argo_apps_manifests/demo-app.yaml
       - |
           kubectl -n argocd patch configmap argocd-cm --type merge -p "$(cat <<EOF
           data:
@@ -102,28 +81,7 @@ tasks:
 
   install_strimzi_kafka:
     cmds:
-      - |
-        cat <<EOF > strimzi-kafka.yaml
-        apiVersion: argoproj.io/v1alpha1
-        kind: Application
-        metadata:
-          name: strimzi-kafka
-          namespace: argocd
-        spec:
-          project: default
-          source:
-            repoURL: https://github.com/BonganY23/Simplifying-GitOps-with-FluxCD.git
-            targetRevision: Modified_by_me_newest
-            path: application/strimzi_kafka
-          destination:
-            server: https://kubernetes.default.svc
-            namespace: kafka
-          syncPolicy:
-            automated:
-              prune: true
-              selfHeal: true
-        EOF
-      - kubectl apply -f strimzi-kafka.yaml
+      - kubectl apply -f applications/argo_apps_manifests/strimzi-kafka.yaml
 
   finalizing_cluster:
     cmds:
