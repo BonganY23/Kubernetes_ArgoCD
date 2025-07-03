@@ -70,3 +70,8 @@ curl argocd.localhost:80
 ```
 
 The URL from which we can access the Argo from our local PC is as follow: http://argocd.localhost:8123/
+
+## To find the initial password for the "admin" user, please use the command below:
+```bash
+argocd admin initial-password -n argocd
+```
