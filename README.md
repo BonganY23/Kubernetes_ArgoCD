@@ -41,12 +41,12 @@ git clone git@github.com:BonganY23/Kubernetes_ArgoCD.git
 ### 7. Go to the following path and execute "setup task".
 
 ```bash
-cd Kubernetes_ArgoCD/Deploy_Kubernetes_Cluster/k3d-cluster-setup
+cd Deploy_Kubernetes_Cluster/k3d-cluster-setup
 ```
 ```bash
 task setup
 ```
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------
 
 VirtualBox port forwarding (NAT):
 
