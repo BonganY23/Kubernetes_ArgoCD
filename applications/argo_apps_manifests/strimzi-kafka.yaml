@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/BonganY23/Kubernetes_ArgoCD.git
     targetRevision: Modified_by_me_newest
-    path: application/strimzi_kafka
+    path: applications/strimzi_kafka
   destination:
     server: https://kubernetes.default.svc
     namespace: kafka
