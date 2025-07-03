@@ -1,1 +1,0 @@
-# Chapter 8: GitOps Tofu Controller for Flux CD
