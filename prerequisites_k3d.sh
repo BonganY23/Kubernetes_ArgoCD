@@ -49,3 +49,9 @@ cd "$GOPATH/src/github.com/getsops/sops/"
 sudo apt-get -y install make
 make install
 apt install age
+
+### Install argo command:
+VERSION=$(curl -L -s https://raw.githubusercontent.com/argoproj/argo-cd/stable/VERSION)
+curl -sSL -o argocd-linux-arm64 https://github.com/argoproj/argo-cd/releases/download/v$VERSION/argocd-linux-arm64
+sudo install -m 555 argocd-linux-arm64 /usr/local/bin/argocd
+rm argocd-linux-arm64
