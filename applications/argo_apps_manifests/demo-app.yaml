@@ -9,6 +9,7 @@ spec:
     repoURL: https://github.com/BonganY23/Kubernetes_ArgoCD.git
     targetRevision: main
     path: applications/nginx-app
+    insecure: true
   destination:
     server: https://kubernetes.default.svc
     namespace: default
