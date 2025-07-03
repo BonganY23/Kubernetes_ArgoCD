@@ -42,7 +42,6 @@ git clone git@github.com:BonganY23/Kubernetes_ArgoCD.git
 
 ```bash
 cd /Simplifying-GitOps-with-FluxCD/Deploy_Kubernetes_Cluster/k3d-cluster-setup
-task setup
 ```
 ```bash
 task setup
