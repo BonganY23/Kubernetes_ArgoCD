@@ -66,6 +66,7 @@ tasks:
   install_strimzi_kafka:
     cmds:
       - kubectl apply -f ../../applications/argo_apps_manifests/strimzi-kafka.yaml
+      - kubectl create secret generic repo-ssh-bongan   --namespace argocd   --type argoproj.io/repository   --from-literal=url=git@github.com:BonganY23/Kubernetes_ArgoCD.git   --from-file=sshPrivateKey=$HOME/.ssh/id_rsa.pub
 
   finalizing_cluster:
     cmds:
