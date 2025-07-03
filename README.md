@@ -22,6 +22,7 @@ INFO: This allows us to git pull/push from your repositories.
 ### 4. Configure Git with your credentials
 
 git config --global user.email "you@example.com"
+
 git config --global user.name "Your Name"
 
 ```bash
