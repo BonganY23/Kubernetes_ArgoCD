@@ -10,7 +10,13 @@ Ubuntu 22.04 Image ISO: https://cdimage.ubuntu.com/releases/24.04/release/ubuntu
 sudo apt-get update ; sudo apt-get -y install ssh -y ; sudo systemctl start ssh ; sudo systemctl enable ssh ; sudo systemctl status ssh
 ```
 
-### 3. Generate new Public/Private key on the VM
+### 3. SSH to the VM:
+
+```bash
+ssh -p 2222 admin@127.0.0.
+```
+
+### 4. Generate new Public/Private key on the VM
 ```bash
 ssh-keygen -t rsa -b 4096
 ```
@@ -22,7 +28,7 @@ cat ~/.ssh/id_rsa.pub
 
 ### ℹ️ INFO: This allows us to git pull/push from your repositories.
 
-### 4. Configure Git with your credentials
+### 5. Configure Git with your credentials
 
 git config --global user.email "you@example.com"
 
@@ -37,14 +43,14 @@ git config --global user.email "bogomilkovachev97@gmail.com"
 git config --global user.name "BonganY23"
 ```
 
-### 5. Clone the "Kubernetes_ArgoCD" repository on the VM
+### 6. Clone the "Kubernetes_ArgoCD" repository on the VM
 
 ```bash
 git clone git@github.com:BonganY23/Kubernetes_ArgoCD.git
 ```
 
-### 6. Execute prerequisites_k3d.sh script from the cloned repository.
-### 7. Go to the following path and execute "setup task".
+### 7. Execute prerequisites_k3d.sh script from the cloned repository.
+### 8. Go to the following path and execute "setup task".
 
 ```bash
 cd Deploy_Kubernetes_Cluster/k3d-cluster-setup
