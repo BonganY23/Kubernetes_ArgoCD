@@ -48,16 +48,20 @@ task setup
 ```
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-VirtualBox port forwarding (NAT):
+## VirtualBox port forwarding (NAT):
 
-We need only SSH 2222 to 22 in VirtualBox.
+### We need only SSH 2222 to 22 in VirtualBox.
 
-To access the GUI of Argo in the browser of the local PC, we need to create SSH tunnel.
+### To access the GUI of Argo in the browser of the local PC, we need to create SSH tunnel.
 
-Command: ssh -p2222 -L 8123:localhost:80 admin@localhost
+```bash
+ssh -p2222 -L 8123:localhost:80 admin@localhost
+```
 
 8123 ==> This is random port which is currenlty not used! 80 ==> This is the port on which we managed to connect to Argo with Curl locally from the VM.
 
-Example: curl argocd.localhost:80
+```bash
+curl argocd.localhost:80
+```
 
 The URL from which we can access the Argo from our local PC is as follow: http://argocd.localhost:8123/
