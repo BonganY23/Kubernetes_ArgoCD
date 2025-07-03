@@ -54,5 +54,48 @@ http://argocd.localhost:8123/
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
+## Setup Instructions
 
+### 1. Create new VM (Ubuntu 22.04)
+Install ssh and enable/start it.
 
+```bash
+sudo apt-get -y install ssh -y ; sudo systemctl start ssh ; sudo systemctl enable ssh ; sudo systemctl status ssh
+```
+
+### 2. Generate new Public/Private key on the VM
+```bash
+ssh-keygen -t rsa -b 4096
+```
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+
+INFO: Distribute the public key within the Github account.
+INFO: This allows us to git pull/push from your repositories.
+
+### 3. Configure Git with your credentials
+
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+
+```bash
+git config --global user.email "bogomilkovachev97@gmail.com"
+```
+```bash
+git config --global user.name "BonganY23"
+```
+
+### 4. Clone the "Kubernetes_ArgoCD" repository on the VM
+
+```bash
+git clone git@github.com:BonganY23/Kubernetes_ArgoCD.git
+```
+
+### 5. Execute prerequisites_k3d.sh script from the cloned repository.
+### 6. Go to the following path and execute setup task.
+
+```bash
+cd /Simplifying-GitOps-with-FluxCD/Deploy_Kubernetes_Cluster/k3d-cluster-setup
+task setup
+```
