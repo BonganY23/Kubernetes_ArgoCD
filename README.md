@@ -60,6 +60,8 @@ ssh -p2222 -L 8123:localhost:80 admin@localhost
 
 8123 ==> This is random port which is currenlty not used! 80 ==> This is the port on which we managed to connect to Argo with Curl locally from the VM.
 
+INFO: Execute the command from the local PC where the VM is hosted!
+
 ```bash
 curl argocd.localhost:80
 ```
