@@ -13,7 +13,7 @@ sudo apt-get update ; sudo apt-get -y install ssh -y ; sudo systemctl start ssh 
 ### 3. SSH to the VM:
 
 ```bash
-ssh -p 2222 admin@127.0.0.
+ssh -p 2222 admin@127.0.0.1
 ```
 
 ### 4. Generate new Public/Private key on the VM
