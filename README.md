@@ -76,11 +76,16 @@ ssh -p2222 -L 8123:localhost:80 admin@localhost
 
 ### ℹ️ INFO: Execute the command from the local PC where the VM is hosted!
 
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+To access from within the VM:
+
 ```bash
 curl argocd.localhost:80
 ```
 
-The URL from which we can access the Argo from our local PC is as follow: http://argocd.localhost:8123/
+To access the GUI from the local PC (browser):
+http://argocd.localhost:8123/
 
 ## To find the initial password for the "admin" user, please use the command below:
 ```bash
