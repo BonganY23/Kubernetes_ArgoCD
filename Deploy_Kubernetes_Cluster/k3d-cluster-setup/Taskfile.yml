@@ -65,9 +65,9 @@ tasks:
 
   install_strimzi_kafka:
     cmds:
-      - kubectl apply -f ../../applications/argo_apps_manifests/strimzi-kafka.yaml
-      - kubectl create secret generic repo-ssh-bongan   --namespace argocd   --type argoproj.io/repository   --from-literal=url=git@github.com:BonganY23/Kubernetes_ArgoCD.git   --from-file=sshPrivateKey=$HOME/.ssh/id_rsa.pub
-
+      - helm repo add strimzi https://strimzi.io/charts/
+      - helm install strimzi/strimzi-kafka-operator
+      
   finalizing_cluster:
     cmds:
       - k3d node create ch10-crossplane-worker   --cluster ch10-crossplane   --replicas 3   --role agent   --image rancher/k3s:v1.30.0-rc1-k3s1
