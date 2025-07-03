@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/BonganY23/Simplifying-GitOps-with-FluxCD.git
+    repoURL: https://github.com/BonganY23/Kubernetes_ArgoCD.git
     targetRevision: Modified_by_me_newest
     path: application/strimzi_kafka
   destination:
