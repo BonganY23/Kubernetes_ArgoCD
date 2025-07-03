@@ -18,9 +18,9 @@ ssh-keygen -t rsa -b 4096
 cat ~/.ssh/id_rsa.pub
 ```
 
-INFO: Distribute the public key within the Github account.
+### ℹ️ INFO: Distribute the public key within the Github account.
 
-INFO: This allows us to git pull/push from your repositories.
+### ℹ️ INFO: This allows us to git pull/push from your repositories.
 
 ### 4. Configure Git with your credentials
 
@@ -66,7 +66,7 @@ ssh -p2222 -L 8123:localhost:80 admin@localhost
 
 8123 ==> This is random port which is currenlty not used! 80 ==> This is the port on which we managed to connect to Argo with Curl locally from the VM.
 
-INFO: Execute the command from the local PC where the VM is hosted!
+### ℹ️ INFO: Execute the command from the local PC where the VM is hosted!
 
 ```bash
 curl argocd.localhost:80
