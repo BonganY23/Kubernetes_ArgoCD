@@ -33,15 +33,6 @@ Command: git clone git@github.com:BonganY23/Kubernetes_ArgoCD.git
 
 Command: task setup
 
-8) Create additional workers for our new cluster.
-	 
-Command: k3d node create ch10-crossplane-worker   --cluster ch10-crossplane   --replicas 3   --role agent   --image rancher/k3s:v1.30.0-rc1-k3s1
-
-9) Execute the following command, so the cluster could be fully functional after restart.
-
-Command: sed -i 's/0.0.0.0/127.0.0.1/g' ~/.kube/config
-
-
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 VirtualBox port forwarding (NAT):
