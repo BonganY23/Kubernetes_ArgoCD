@@ -4,7 +4,7 @@
 ### 2. Install ssh and enable/start it.
 
 ```bash
-sudo apt-get -y install ssh -y ; sudo systemctl start ssh ; sudo systemctl enable ssh ; sudo systemctl status ssh
+sudo apt-get update ; sudo apt-get -y install ssh -y ; sudo systemctl start ssh ; sudo systemctl enable ssh ; sudo systemctl status ssh
 ```
 
 ### 3. Generate new Public/Private key on the VM
