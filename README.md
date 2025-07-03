@@ -25,7 +25,7 @@ Example: git config --global user.name "BonganY23"
 
 5) Clone the "k3d" repository on the VM.
 	
-Command: git clone --branch Modified_by_me_newest --single-branch git@github.com:BonganY23/Simplifying-GitOps-with-FluxCD.git
+Command: git clone git@github.com:BonganY23/Kubernetes_ArgoCD.git
 
 6) Execute "prerequisites_k3d" script from the clonned repository.
 
