@@ -16,6 +16,7 @@ cat ~/.ssh/id_rsa.pub
 ```
 
 INFO: Distribute the public key within the Github account.
+
 INFO: This allows us to git pull/push from your repositories.
 
 ### 4. Configure Git with your credentials
