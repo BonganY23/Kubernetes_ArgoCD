@@ -6,6 +6,7 @@ Command: sudo apt-get -y install ssh -y ; sudo systemctl start ssh ; sudo system
 3) Generate new Public/Private key on the VM:
 
 Command: ssh-keygen -t rsa -b 4096
+
 Command: cat ~/.ssh/id_rsa.pub
 	
 INFO: Distribute the public key within the Github account.
