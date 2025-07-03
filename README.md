@@ -29,7 +29,7 @@ Command: git clone --branch Modified_by_me_newest --single-branch git@github.com
 
 6) Execute "prerequisites_k3d" script from the clonned repository.
 
-7) Go to the following path "/Simplifying-GitOps-with-FluxCD/ch10/k3d-cluster-setup" and execute:
+7) Go to the following path "/Simplifying-GitOps-with-FluxCD/Deploy_Kubernetes_Cluster/k3d-cluster-setup" and execute:
 
 Command: task setup
 
