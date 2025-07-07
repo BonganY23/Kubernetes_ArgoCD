@@ -76,6 +76,22 @@ ssh -p2222 -L 8123:localhost:80 admin@localhost
 
 ### ℹ️ INFO: Execute the command from the local PC where the VM is hosted!
 
+---------------------------------------------------------------------------------------------------------
+
+To access the GUI of Prometheus, we should create the following network confgiuration within VirtualBox:
+
+Name: Prometheus
+
+Protocol: TCP
+
+Host IP: 127.0.0.1
+
+Host Port: 9090
+
+Guest IP: 10.0.2.15
+
+Guest Port: 9090
+
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
 To access from within the VM:
