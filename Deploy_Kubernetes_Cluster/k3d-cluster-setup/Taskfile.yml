@@ -68,9 +68,14 @@ tasks:
     cmds:
       - helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
       - helm install prometheus prometheus-community/prometheus
-      - echo "Get the Prometheus server URL:"
-      - POD_NAME=$(kubectl get pods -n default -l app.kubernetes.io/component=server -o jsonpath="{.items[0].metadata.name}") && kubectl port-forward -n default $POD_NAME 9090:9090
-
+      - |
+        echo "Waiting for Prometheus pod to be ready..."
+        while [[ $(kubectl get pods -n default -l app.kubernetes.io/component=server -o jsonpath="{.items[0].status.phase}") != "Running" ]]; do
+          sleep 2
+        done
+        POD_NAME=$(kubectl get pods -n default -l app.kubernetes.io/component=server -o jsonpath="{.items[0].metadata.name}")
+        kubectl port-forward -n default $POD_NAME 9090:9090 &
+    desc: Install Prometheus via Helm
 
   finalizing_cluster:
     cmds:
