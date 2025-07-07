@@ -94,16 +94,19 @@ Guest Port: 9090
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-To access from within the VM:
+To access ArgoCD from within the VM:
 
 ```bash
 curl argocd.localhost:80
 ```
 
-To access the GUI from the local PC (browser):
+To access the ArgoCD GUI from the local PC (browser):
 http://argocd.localhost:8123/
 
 ## To find the initial password for the "admin" user, please use the command below:
 ```bash
 argocd admin initial-password -n argocd
 ```
+
+To access the Prometheus GUI from the local PC (browser):
+http://localhost:9090/query
