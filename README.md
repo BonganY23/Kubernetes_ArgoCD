@@ -103,10 +103,12 @@ curl argocd.localhost:80
 To access the ArgoCD GUI from the local PC (browser):
 http://argocd.localhost:8123/
 
-## To find the initial password for the "admin" user, please use the command below:
+### To find the initial password for the "admin" user, please use the command below:
 ```bash
 argocd admin initial-password -n argocd
 ```
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
 
 To access the Prometheus GUI from the local PC (browser):
 http://localhost:9090/query
