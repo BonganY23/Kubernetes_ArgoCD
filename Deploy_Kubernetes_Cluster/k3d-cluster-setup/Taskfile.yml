@@ -69,8 +69,8 @@ tasks:
       - helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
       - helm install prometheus prometheus-community/prometheus
       - echo "Get the Prometheus server URL:"
-      - export POD_NAME=$(kubectl get pods --namespace default -l "app.kubernetes.io/name=prometheus,app.kubernetes.io/instance=prometheus" -o jsonpath="{.items[0].metadata.name}")
-      - kubectl --namespace default port-forward $POD_NAME 9090
+      - POD_NAME=$(kubectl get pods -n default -l app.kubernetes.io/component=server -o jsonpath="{.items[0].metadata.name}") && kubectl port-forward -n default $POD_NAME 9090:9090
+
 
   finalizing_cluster:
     cmds:
