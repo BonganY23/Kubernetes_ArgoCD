@@ -74,7 +74,8 @@ tasks:
           sleep 2
         done
         POD_NAME=$(kubectl get pods -n default -l app.kubernetes.io/component=server -o jsonpath="{.items[0].metadata.name}")
-        kubectl port-forward -n default $POD_NAME 9090:9090 &
+        nohup kubectl port-forward -n default svc/prometheus-server 9090:80 > /tmp/pf.log 2>&1 &
+
     desc: Install Prometheus via Helm
 
   finalizing_cluster:
