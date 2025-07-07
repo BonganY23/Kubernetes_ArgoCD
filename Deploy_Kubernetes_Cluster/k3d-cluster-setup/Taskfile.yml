@@ -12,6 +12,7 @@ tasks:
       - task: install_argocd
       - task: install_strimzi_kafka
       - task: finalizing_cluster
+      - task: install_prometheus
       - task: print_setup_complete
 
   install_k3d:
@@ -62,6 +63,11 @@ tasks:
   install_strimzi_kafka:
     cmds:
       - kubectl apply -f ../../applications/argo_apps_manifests/strimzi-kafka.yaml
+  install_prometheus:
+    cmds:
+      - helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+      - helm install prometheus prometheus-community/prometheus
+
 
   finalizing_cluster:
     cmds:
