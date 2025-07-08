@@ -2,8 +2,9 @@
 
 ### 1. Create new VM (Ubuntu 22.04)
 
-Ubuntu 22.04.02 Image ISO: https://cdimage.ubuntu.com/releases/24.04/release/ubuntu-24.04.2-live-server-arm64.iso
-Ubuntu 22.04.05 Image ISO: https://releases.ubuntu.com/jammy/ubuntu-22.04.5-live-server-amd64.iso
+Ubuntu 22.04.02 Image ISO (MAC): https://cdimage.ubuntu.com/releases/24.04/release/ubuntu-24.04.2-live-server-arm64.iso
+
+Ubuntu 22.04.05 Image ISO (Windows): https://releases.ubuntu.com/jammy/ubuntu-22.04.5-live-server-amd64.iso
 
 ### 2. Install ssh and enable/start it.
 
