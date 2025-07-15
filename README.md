@@ -62,7 +62,7 @@ task setup
 ```
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
-## VirtualBox port forwarding (NAT):
+## VirtualBox port forwarding rules (NAT):
 
 ### We need only SSH 2222 to 22 in VirtualBox.
 
@@ -78,18 +78,6 @@ Guest IP: <nothing_here>
 
 Guest Port: 22
 
-### To access the GUI of Argo in the browser of the local PC, we need to create SSH tunnel.
-
-```bash
-ssh -p2222 -L 8123:localhost:80 admin@localhost
-```
-
-8123 ==> This is random port which is currenlty not used! 
-
-80 ==> This is the port on which we managed to connect to Argo with Curl locally from the VM!
-
-### ℹ️ INFO: Execute the command from the local PC where the VM is hosted!
-
 ### To access the GUI of Prometheus, we should create the following network confgiuration within VirtualBox:
 
 Name: Prometheus
@@ -103,6 +91,20 @@ Host Port: 9090
 Guest IP: 10.0.2.15
 
 Guest Port: 9090
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+### To access the GUI of Argo in the browser of the local PC, we need to create SSH tunnel.
+
+```bash
+ssh -p2222 -L 8123:localhost:80 admin@localhost
+```
+
+8123 ==> This is random port which is currenlty not used! 
+
+80 ==> This is the port on which we managed to connect to Argo with Curl locally from the VM!
+
+### ℹ️ INFO: Execute the command from the local PC where the VM is hosted!
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
