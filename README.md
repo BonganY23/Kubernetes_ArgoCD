@@ -66,6 +66,18 @@ task setup
 
 ### We need only SSH 2222 to 22 in VirtualBox.
 
+Name: SSH
+
+Protocol: TCP
+
+Host IP: 127.0.0.1
+
+Host Port: 22
+
+Guest IP: <nothing_here>
+
+Guest Port: 2222
+
 ### To access the GUI of Argo in the browser of the local PC, we need to create SSH tunnel.
 
 ```bash
