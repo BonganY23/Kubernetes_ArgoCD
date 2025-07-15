@@ -12,6 +12,40 @@ Ubuntu 22.04.05 Image ISO (Windows): https://releases.ubuntu.com/jammy/ubuntu-22
 sudo apt-get update ; sudo apt-get -y install ssh -y ; sudo systemctl start ssh ; sudo systemctl enable ssh ; sudo systemctl status ssh
 ```
 
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+## VirtualBox port forwarding rules (NAT):
+
+### We need only SSH 2222 to 22 in VirtualBox.
+
+Name: SSH
+
+Protocol: TCP
+
+Host IP: 127.0.0.1
+
+Host Port: 2222
+
+Guest IP: <nothing_here>
+
+Guest Port: 22
+
+### To access the GUI of Prometheus, we should create the following network confgiuration within VirtualBox:
+
+Name: Prometheus
+
+Protocol: TCP
+
+Host IP: 127.0.0.1
+
+Host Port: 9090
+
+Guest IP: 10.0.2.15
+
+Guest Port: 9090
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
 ### 3. SSH to the VM:
 
 ```bash
@@ -60,37 +94,6 @@ cd Deploy_Kubernetes_Cluster/k3d-cluster-setup
 ```bash
 task setup
 ```
----------------------------------------------------------------------------------------------------------------------------------------------------
-
-## VirtualBox port forwarding rules (NAT):
-
-### We need only SSH 2222 to 22 in VirtualBox.
-
-Name: SSH
-
-Protocol: TCP
-
-Host IP: 127.0.0.1
-
-Host Port: 2222
-
-Guest IP: <nothing_here>
-
-Guest Port: 22
-
-### To access the GUI of Prometheus, we should create the following network confgiuration within VirtualBox:
-
-Name: Prometheus
-
-Protocol: TCP
-
-Host IP: 127.0.0.1
-
-Host Port: 9090
-
-Guest IP: 10.0.2.15
-
-Guest Port: 9090
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 
