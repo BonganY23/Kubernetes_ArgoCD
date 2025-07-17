@@ -18,7 +18,6 @@ spec:
         deleteClaim: false
         kraftMetadata: shared
 ---
-
 apiVersion: kafka.strimzi.io/v1beta2
 kind: Kafka
 metadata:
@@ -45,6 +44,3 @@ spec:
       transaction.state.log.min.isr: 1
       default.replication.factor: 1
       min.insync.replicas: 1
-  entityOperator:
-    topicOperator: {}
-    userOperator: {}
