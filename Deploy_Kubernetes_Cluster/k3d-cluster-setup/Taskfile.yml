@@ -12,7 +12,6 @@ tasks:
       - task: install_argocd
       - task: install_strimzi_kafka
       - task: finalizing_cluster
-      - task: install_prometheus
       - task: print_setup_complete
 
   install_k3d:
@@ -64,20 +63,6 @@ tasks:
     cmds:
       - kubectl apply -f ../../applications/argo_apps_manifests/strimzi-kafka.yaml
   
-  install_prometheus:
-    cmds:
-      - helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-      - helm install prometheus prometheus-community/prometheus
-      - |
-        echo "Waiting for Prometheus pod to be ready..."
-        while [[ $(kubectl get pods -n default -l app.kubernetes.io/component=server -o jsonpath="{.items[0].status.phase}") != "Running" ]]; do
-          sleep 2
-        done
-        POD_NAME=$(kubectl get pods -n default -l app.kubernetes.io/component=server -o jsonpath="{.items[0].metadata.name}")
-        nohup kubectl port-forward -n default svc/prometheus-server 9090:80 > /tmp/pf.log 2>&1 &
-
-    desc: Install Prometheus via Helm
-
   finalizing_cluster:
     cmds:
       - k3d node create ch10-crossplane-worker   --cluster ch10-crossplane   --replicas 3   --role agent   --image rancher/k3s:v1.30.0-rc1-k3s1
