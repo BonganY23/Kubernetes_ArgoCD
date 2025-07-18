@@ -14,12 +14,13 @@ kube-prometheus-stack:
     prometheusSpec:
       retention: 7d
       resources:
-        limits:
-          cpu: 200m
-          memory: 512Mi
         requests:
           cpu: 100m
           memory: 256Mi
+          ephemeral-storage: "512Mi"
+        limits:
+          cpu: 200m
+          memory: 512Mi
       serviceMonitorSelectorNilUsesHelmValues: false
       podMonitorSelectorNilUsesHelmValues: false
 
@@ -28,3 +29,4 @@ kube-prometheus-stack:
 
   prometheus-node-exporter:
     enabled: true
+
